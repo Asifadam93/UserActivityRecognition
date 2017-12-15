@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements OnRequestPermissi
 
         setContentView(R.layout.activity_main);
 
-<<<<<<< HEAD
         mLayout = findViewById(R.id.sample_main_layout);
 
         //vérification
@@ -39,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements OnRequestPermissi
         } else {
             this.ecrireDonnees();
         }
+
+        RxSensor.getInstance(getApplicationContext());
     }
 
 
@@ -68,8 +69,5 @@ public class MainActivity extends AppCompatActivity implements OnRequestPermissi
     private void ecrireDonnees() {
         SaveSampleUtils.SaveData("Ceci est un test");
         SaveSampleUtils.SaveData("Ceci est un second test");
-=======
-        RxSensor.getInstance(getApplicationContext());
->>>>>>> origin/master
     }
 }
