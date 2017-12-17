@@ -20,10 +20,9 @@ import java.io.IOException;
 
 public class SaveSampleUtils {
 
-    private static final String  TAG = SaveSampleUtils.class.getSimpleName();
-    private static final String FOLDER  = "Dataset";
-    private static final String FILE    = "dataset.txt";
-    private static Boolean result = false;
+    private static final String  TAG =  SaveSampleUtils.class.getSimpleName();
+    private static final String FILE =  "dataset.txt";
+    private static Boolean result =     false;
 
 
 
@@ -32,32 +31,23 @@ public class SaveSampleUtils {
         Log.i(TAG, "Sauvegarde d'un jeu de donnée");
 
         File root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        File dossier = new File(root, FOLDER);
 
-        // Création du dossier s'il n'existe pas
-        if (!dossier.exists()) {
-            Log.i(TAG, "Création d'un dossier");
-            try {
-                result = dossier.mkdir();
-                Log.i(TAG, "Résultat de la création du dossier : ("+(result?"OK":"KO")+")");
-            } catch (Exception e){
-                Log.i(TAG, e.getMessage());
-            }
-        }
+        // Récupération du fichier
+        File datasetFile        =  new File(root, FILE);
 
-        // Création du fichier s'i n'existe pas
-        File datasetFile        =  new File(dossier, FILE);
-
+        // Si le fichier n'existe pas, on le créé
         if (!datasetFile.exists()) {
-            Log.i(TAG, "Création d'un fichier");
+            Log.i(TAG, "Création du fichier "+FILE);
             try {
                 result = datasetFile.createNewFile();
-                Log.i(TAG, "Résultat de la création du dossier : ("+(result?"OK":"KO")+")");
+                Log.i(TAG, " -> " + (result?"OK":"KO") );
             } catch (Exception e){
                 Log.i(TAG, e.getMessage());
+                Log.i(TAG, " -> KO");
             }
         }
 
+        // Ecriture sur le fichier
         FileWriter fileWriter   = null;
 
         try {

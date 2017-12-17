@@ -26,9 +26,7 @@ public class MainActivity extends AppCompatActivity implements OnRequestPermissi
 
         setContentView(R.layout.activity_main);
 
-        mLayout = findViewById(R.id.sample_main_layout);
-
-        //vérification
+        //Récupération de la récupération d'écrire sur
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
@@ -39,7 +37,8 @@ public class MainActivity extends AppCompatActivity implements OnRequestPermissi
             this.ecrireDonnees();
         }
 
-        RxSensor.getInstance(getApplicationContext());
+
+        //RxSensor.getInstance(getApplicationContext());
     }
 
 

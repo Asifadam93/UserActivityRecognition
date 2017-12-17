@@ -22,9 +22,14 @@
 
         <receiver android:name=".GpsProviderListener">
             <intent-filter>
-                <action android:name="android.location.PROVIDERS_CHANGED"/>
+                <action android:name="android.location.PROVIDERS_CHANGED" />
             </intent-filter>
         </receiver>
 
+        <activity
+            android:name=".RecordActivity"
+            android:label="@string/title_activity_record"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
+
 </manifest>
