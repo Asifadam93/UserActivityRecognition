@@ -45,8 +45,6 @@ public class MainActivity extends AppCompatActivity implements OnRequestPermissi
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     MY_AUTHORISATION_FILE_WRITE);
-        } else {
-            this.ecrireDonnees();
         }
 
     }
@@ -71,12 +69,6 @@ public class MainActivity extends AppCompatActivity implements OnRequestPermissi
 
             }
         }
-        this.ecrireDonnees();
     }
 
-
-    private void ecrireDonnees() {
-        SaveSampleUtils.SaveData("Ceci est un test");
-        SaveSampleUtils.SaveData("Ceci est un second test");
-    }
 }
