@@ -49,8 +49,6 @@ public class MainActivity extends AppCompatActivity implements OnRequestPermissi
             this.ecrireDonnees();
         }
 
-
-        //RxSensor.getInstance(getApplicationContext());
     }
 
 

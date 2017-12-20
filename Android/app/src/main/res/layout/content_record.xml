@@ -34,7 +34,7 @@
         android:layout_marginStart="8dp"
         android:indeterminate="false"
         android:max="100"
-        android:progress="25"
+        android:progress="0"
         android:progressTint="@color/colorPrimaryDark"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@+id/timerView"

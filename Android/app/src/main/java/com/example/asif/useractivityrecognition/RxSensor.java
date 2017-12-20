@@ -1,6 +1,7 @@
 package com.example.asif.useractivityrecognition;
 
 import android.content.Context;
+import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.util.Log;
 
@@ -22,22 +23,22 @@ public class RxSensor {
     private static String TAG = "RxSensor";
 
     private RxSensor(Context context) {
-        new ReactiveSensors(context).observeSensor(android.hardware.Sensor.TYPE_ACCELEROMETER)
-                .subscribeOn(Schedulers.computation())
-                .filter(ReactiveSensorFilter.filterSensorChanged())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<ReactiveSensorEvent>() {
-                    @Override
-                    public void accept(ReactiveSensorEvent reactiveSensorEvent) throws Exception {
-                        SensorEvent event = reactiveSensorEvent.getSensorEvent();
+        new ReactiveSensors(context).observeSensor(Sensor.TYPE_GYROSCOPE)
+            .subscribeOn(Schedulers.computation())
+            .filter(ReactiveSensorFilter.filterSensorChanged())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Consumer<ReactiveSensorEvent>() {
+                @Override
+                public void accept(ReactiveSensorEvent reactiveSensorEvent) throws Exception {
+                    SensorEvent event = reactiveSensorEvent.getSensorEvent();
 
-                        float x = event.values[0];
-                        float y = event.values[1];
-                        float z = event.values[2];
+                    float x = event.values[0];
+                    float y = event.values[1];
+                    float z = event.values[2];
 
-                        Log.d(TAG, "Accelerometer - X : "+x+", Y : "+y+", Z : "+z);
-                    }
-                });
+                    Log.d(TAG, "Accelerometer - X : "+x+", Y : "+y+", Z : "+z);
+                }
+            });
     }
 
     public static RxSensor getInstance(Context context) {
