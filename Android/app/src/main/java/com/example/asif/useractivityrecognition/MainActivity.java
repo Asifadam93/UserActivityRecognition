@@ -38,7 +38,8 @@ public class MainActivity extends AppCompatActivity implements OnRequestPermissi
         findViewById(R.id.geoLocButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getApplicationContext(), GeoFencingActivity.class);
+                startActivity(intent);
             }
         });
 
