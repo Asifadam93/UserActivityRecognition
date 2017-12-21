@@ -15,7 +15,7 @@
     </string>
     <string name="presentation_logo_description">"Logo de l'application"</string>
     <string name="presentation_button_continue">"Continuer"</string>
-
+    <string name="geo_fencing_button">"Geo-Fencing"</string>
 
 
     <string name="action_settings">Settings</string>

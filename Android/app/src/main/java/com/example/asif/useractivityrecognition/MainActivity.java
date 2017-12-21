@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityCompat.OnRequestPermissionsResultCallback;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,15 +25,20 @@ public class MainActivity extends AppCompatActivity implements OnRequestPermissi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
-        Button validateButton =  this.findViewById(R.id.validateButtonView);
 
-        validateButton.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.validateButtonView).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), RecordActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.geoLocButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
