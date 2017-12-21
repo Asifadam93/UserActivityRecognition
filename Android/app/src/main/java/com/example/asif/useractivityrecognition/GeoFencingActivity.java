@@ -2,6 +2,7 @@ package com.example.asif.useractivityrecognition;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +17,8 @@ import android.view.View;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -27,7 +30,11 @@ public class GeoFencingActivity extends AppCompatActivity {
     private MapFragment mapFragment;
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
-    private static int REQ_PERMISSION = 1;
+    private final int REQ_PERMISSION = 1;
+    private final int INTERVAL_UPDATE = 1000;
+    private final int INTERVAL_FASTEST = 900;
+    private Location mLocation;
+    private LocationRequest mLocationRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,11 +111,23 @@ public class GeoFencingActivity extends AppCompatActivity {
         }
     }
 
-    private void getLastLocation(){
+    private void getLastLocation() {
 
         Log.i(TAG, "getLastLocation");
 
-        if(checkLocationPermission()){
+        if (checkLocationPermission()) {
+
+            mLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+
+            if (mLocation != null) {
+
+                Log.i(TAG, "Lat : " + mLocation.getLatitude() + ", Long : " + mLocation.getLongitude());
+
+            } else {
+
+                Log.i(TAG, "Location not available");
+                startLocationUpdates();
+            }
 
         } else {
             askPermission();
@@ -116,23 +135,66 @@ public class GeoFencingActivity extends AppCompatActivity {
 
     }
 
-    private boolean checkLocationPermission(){
+    private void startLocationUpdates() {
+
+        Log.i(TAG, "startLocationUpdates");
+
+        mLocationRequest = LocationRequest.create()
+                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+                .setInterval(INTERVAL_UPDATE)
+                .setFastestInterval(INTERVAL_FASTEST);
+
+        if (checkLocationPermission()) {
+
+            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, new LocationListener() {
+                @Override
+                public void onLocationChanged(Location location) {
+
+                    mLocation = location;
+
+                }
+            });
+        }
+    }
+
+    private boolean checkLocationPermission() {
 
         Log.i(TAG, "checkLocationPermission");
 
         return (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED );
+                == PackageManager.PERMISSION_GRANTED);
     }
 
-    private void askPermission(){
+    private void askPermission() {
 
         Log.i(TAG, "askPermission");
         ActivityCompat.requestPermissions(
                 this,
-                new String[] { Manifest.permission.ACCESS_FINE_LOCATION },
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                 REQ_PERMISSION
         );
 
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        Log.i(TAG, "onRequestPermissionsResult");
+
+        if (requestCode == REQ_PERMISSION) {
+
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                Log.i(TAG, "permission granted");
+                getLastLocation();
+
+            } else {
+                Log.i(TAG, "permission denied");
+                finish();
+            }
+
+        }
+
+    }
 }
