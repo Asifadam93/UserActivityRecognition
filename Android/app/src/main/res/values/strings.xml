@@ -8,17 +8,18 @@
     <string name="presentation_text">
         "Cette application à but pédagogique à pour but d’enregistrer les informations relatives à "
         "des actions courtes de la vie courante (s’asseoir, se lever, sauter, tomber etc.)\n"
-        "Ces informations seront enregistrées dans un fichier nommé « dataset.txt » contenu dans "
+        "Ces informations seront enregistrées dans un fichier nommé « dataset.csv » contenu dans "
         "le dossier Download de votre téléphone.\n"
         "Pour ce faire certaines autorisations vous seront peut être demandées, afin de pouvoir "
         "enregistrer ce fichier ou géo localiser l’action."
     </string>
     <string name="presentation_logo_description">"Logo de l'application"</string>
     <string name="presentation_button_continue">"Continuer"</string>
-
+    <string name="geo_fencing_button">"Geo-Fencing"</string>
 
 
     <string name="action_settings">Settings</string>
+
 
     <string-array name="reccord_locations">
         <item>Maison</item>
@@ -35,4 +36,7 @@
         <item>Marcher</item>
         <item>Courrir</item>
     </string-array>
+
+    <string name="title_activity_geo_fencing">GeoFencingActivity</string>
+
 </resources>
