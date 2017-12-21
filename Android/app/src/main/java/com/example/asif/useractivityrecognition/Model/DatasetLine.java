@@ -1,9 +1,7 @@
 package com.example.asif.useractivityrecognition.Model;
 
 import android.util.Log;
-
 import com.example.asif.useractivityrecognition.RecordActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +22,7 @@ public class DatasetLine
     public List<Float> t_acc = new ArrayList<Float>();
 
 
+
     public String toString() {
         Log.d(TAG, this.etiquette +
                 "\n\tlocalisation : " + String.valueOf(localisation) +
@@ -32,18 +31,21 @@ public class DatasetLine
                 "\n\tz : " + z_acc.toString() +
                 "\n\tt : " + t_acc.toString());
 
-        String retour = x_acc.toString() + y_acc.toString() + z_acc.toString() + t_acc.toString();
+        String retour = this.etiquette+";";
 
-        retour = retour
-            .replace(",",";")
-            .replace("[",";")
-            .replace("]",";")
-            .replace(" ",";")
-            .replace(";;",";")
-            ;
+        //création d'une liste qui concatète les données de l'accéléromètre
+        List<Float> tempo = new ArrayList<Float>();
+        tempo.addAll(x_acc);
+        tempo.addAll(y_acc);
+        tempo.addAll(z_acc);
+        tempo.addAll(t_acc);
 
+        //nécessaire pour ne pas avoir d'exposant dans notre dataset (à la place d'un toString sur notre liste de Float)
+        for(Float item : tempo){
+            retour += String.format("%.6f;", item);
+        }
 
-        return this.etiquette + retour;
+        return retour;
     }
 
 
