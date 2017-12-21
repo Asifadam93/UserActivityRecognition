@@ -1,5 +1,9 @@
 package com.example.asif.useractivityrecognition.Model;
 
+import android.util.Log;
+
+import com.example.asif.useractivityrecognition.RecordActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +13,8 @@ import java.util.List;
 
 public class DatasetLine
 {
+    private static final String TAG = RecordActivity.class.getSimpleName();
+
     public String  etiquette;
     public int     localisation;
 
@@ -19,12 +25,25 @@ public class DatasetLine
 
 
     public String toString() {
-        return "Jeu de donnée :" + this.etiquette +
-            "\n localisation " + String.valueOf(localisation) +
-            "\n x : " + x_acc.toString() +
-            "\n y : " + y_acc.toString() +
-            "\n z : " + z_acc.toString() +
-            "\n t : " + t_acc.toString();
+        Log.d(TAG, this.etiquette +
+                "\n\tlocalisation : " + String.valueOf(localisation) +
+                "\n\tx : " + x_acc.toString() +
+                "\n\ty : " + y_acc.toString() +
+                "\n\tz : " + z_acc.toString() +
+                "\n\tt : " + t_acc.toString());
+
+        String retour = x_acc.toString() + y_acc.toString() + z_acc.toString() + t_acc.toString();
+
+        retour = retour
+            .replace(",",";")
+            .replace("[",";")
+            .replace("]",";")
+            .replace(" ",";")
+            .replace(";;",";")
+            ;
+
+
+        return this.etiquette + retour;
     }
 
 

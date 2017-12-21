@@ -19,4 +19,20 @@
 
 
     <string name="action_settings">Settings</string>
+
+    <string-array name="reccord_locations">
+        <item>Maison</item>
+        <item>Travail</item>
+        <item>Ecole</item>
+        <item>Rue</item>
+    </string-array>
+
+    <string-array name="reccord_label">
+        <item>Se lever</item>
+        <item>"S'assoir"</item>
+        <item>Ne rien faire</item>
+        <item>Sauter</item>
+        <item>Marcher</item>
+        <item>Courrir</item>
+    </string-array>
 </resources>

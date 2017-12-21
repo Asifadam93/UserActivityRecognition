@@ -21,7 +21,7 @@ import java.io.IOException;
 public class SaveSampleUtils {
 
     private static final String  TAG =  SaveSampleUtils.class.getSimpleName();
-    private static final String FILE =  "dataset.txt";
+    private static final String FILE =  "dataset.csv";
     private static Boolean result =     false;
 
 
