@@ -20,7 +20,7 @@ import io.realm.RealmResults;
 public class GeofencingActivity extends AppCompatActivity {
 
     private Realm realm;
-    private static final String TAG  = GeofencingActivity.class.getSimpleName();
+    private static final String TAG  = "mGeofencingActivity";
     private GeofencePositionAdapter mGeofencePositionAdapter;
 
     @Override
@@ -58,14 +58,37 @@ public class GeofencingActivity extends AppCompatActivity {
             Log.i(TAG, geofencePosition.getGeofenceId());
         }
 
-
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         mGeofencePositionAdapter = new GeofencePositionAdapter(this, realmResults);
         recyclerView.setAdapter(mGeofencePositionAdapter);
+    }
 
+}
 
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+/*realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                GeofencePosition geofencePosition = realm.createObject(GeofencePosition.class);
+                geofencePosition.setGeofenceId("Home");
+                geofencePosition.setLatitude(48.9679385);
+                geofencePosition.setLongitude(2.2800401);
+                geofencePosition.setRadius(100);
+            }
+        });
+
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                GeofencePosition geofencePosition = realm.createObject(GeofencePosition.class);
+                geofencePosition.setGeofenceId("Office");
+                geofencePosition.setLatitude(48.8968845);
+                geofencePosition.setLongitude(2.3663293);
+                geofencePosition.setRadius(100);
+            }
+        });*/
+
+/*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -76,6 +99,3 @@ public class GeofencingActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });*/
-    }
-
-}

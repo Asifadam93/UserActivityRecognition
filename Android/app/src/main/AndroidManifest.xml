@@ -30,14 +30,10 @@
             android:label="@string/title_activity_geo_fencing"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCi-1oPsF8XdHWZFZVdUwv-3d5GA8Uu5pE" />
-
         <activity
             android:name=".GeofencingActivity"
             android:label="@string/title_activity_geofencing"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
