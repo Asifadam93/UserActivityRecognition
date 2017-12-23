@@ -5,7 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.asif.useractivityrecognition.GeoFencingActivityTmp"
-    tools:showIn="@layout/activity_geo_fencing">
+    tools:context="com.example.asif.useractivityrecognition.GeofencingActivity"
+    tools:showIn="@layout/activity_geofencing">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>

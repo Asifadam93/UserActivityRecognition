@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.asif.useractivityrecognition.Save.SaveSampleUtils;
@@ -38,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements OnRequestPermissi
         findViewById(R.id.geoLocButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), GeoFencingActivity.class);
+                Intent intent = new Intent(getApplicationContext(), GeofencingActivity.class);
                 startActivity(intent);
             }
         });

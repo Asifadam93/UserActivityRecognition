@@ -38,5 +38,6 @@
     </string-array>
 
     <string name="title_activity_geo_fencing">GeoFencingActivity</string>
+    <string name="title_activity_geofencing">GeofencingActivity</string>
 
 </resources>
