@@ -50,6 +50,7 @@ public class GeofencingActivity extends AppCompatActivity {
     private GoogleApiClient googleApiClient;
     private Activity activity;
     private Location mLocation;
+    private boolean isGeoFenceRunning = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,14 +65,15 @@ public class GeofencingActivity extends AppCompatActivity {
 
         realm = Realm.getDefaultInstance();
 
-        RealmResults<GeofencePosition> realmResults = realm.where(GeofencePosition.class).findAll();
+        final RealmResults<GeofencePosition> realmResults = realm.where(GeofencePosition.class).findAll();
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         mGeofencePositionAdapter = new GeofencePositionAdapter(this, realmResults);
         recyclerView.setAdapter(mGeofencePositionAdapter);
 
-        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+        // add geofence position to monitor
+        findViewById(R.id.fabAdd).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -82,6 +84,33 @@ public class GeofencingActivity extends AppCompatActivity {
                 }
 
             }
+        });
+
+        // start saved geofence monitoring
+        findViewById(R.id.fabPlay).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (isGeoFenceRunning) {
+                    GlobalFunctions.showSnackBar(activity, "Geofence already running");
+                    return;
+                }
+
+                if (mLocation == null) {
+                    GlobalFunctions.showSnackBar(activity, "Location not available");
+                    return;
+                }
+
+                if (realmResults.isEmpty()) {
+                    GlobalFunctions.showSnackBar(activity, "Geofence list is empty");
+                    return;
+                }
+
+                for (GeofencePosition mGeofencePosition : realmResults) {
+                    addGeoFencing(mGeofencePosition);
+                }
+            }
+
         });
     }
 
@@ -141,7 +170,7 @@ public class GeofencingActivity extends AppCompatActivity {
         }
     }
 
-    private void startGeoFencing(final GeofencePosition geofencePosition) {
+    private void addGeoFencing(final GeofencePosition geofencePosition) {
 
         Log.i(TAG, geofencePosition.toString());
 
@@ -178,6 +207,9 @@ public class GeofencingActivity extends AppCompatActivity {
                         public void onResult(@NonNull Status status) {
 
                             if (status.isSuccess()) {
+
+                                isGeoFenceRunning = true;
+
                                 GlobalFunctions.showSnackBar(activity, "Geofence added");
 
                                 // save geofence info to db
@@ -264,7 +296,7 @@ public class GeofencingActivity extends AppCompatActivity {
                 mGeofencePosition.setLongitude(mLocation.getLongitude());
                 mGeofencePosition.setRadius(100);
 
-                startGeoFencing(mGeofencePosition);
+                addGeoFencing(mGeofencePosition);
             }
         });
         dialogBuilder.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {

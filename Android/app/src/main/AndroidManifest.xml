@@ -25,10 +25,6 @@
             android:name=".RecordActivity"
             android:label="@string/title_activity_record"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".GeoFencingActivityTmp"
-            android:label="@string/title_activity_geo_fencing"
-            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name=".GeofencingActivity"

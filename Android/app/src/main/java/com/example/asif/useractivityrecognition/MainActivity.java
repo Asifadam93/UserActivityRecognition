@@ -3,7 +3,6 @@ package com.example.asif.useractivityrecognition;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityCompat.OnRequestPermissionsResultCallback;
@@ -13,16 +12,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
-import com.example.asif.useractivityrecognition.Interface.GoogleClientListener;
-import com.example.asif.useractivityrecognition.Interface.LocationChangeListener;
-import com.example.asif.useractivityrecognition.Model.GeofencePosition;
-import com.example.asif.useractivityrecognition.Utils.GlobalFunctions;
-import com.example.asif.useractivityrecognition.Utils.GoogleClient;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
 
 public class MainActivity extends AppCompatActivity implements OnRequestPermissionsResultCallback {
 
@@ -50,19 +39,16 @@ public class MainActivity extends AppCompatActivity implements OnRequestPermissi
             }
         });
 
-        /*//Récupération de la récupération d'écrire sur
+        //Récupération de la récupération d'écrire sur
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    MY_AUTHORISATION_FILE_WRITE);
-        }*/
+                    AUTHORISATION_FILE_WRITE);
+        }
 
     }
-
-
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

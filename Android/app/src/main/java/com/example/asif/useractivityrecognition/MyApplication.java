@@ -9,7 +9,7 @@ import io.realm.RealmConfiguration;
  * Created by Asif on 23/12/2017.
  */
 
-public class MyApplication extends Application {
+public class MyApplication extends android.app.Application {
 
     @Override
     public void onCreate() {
