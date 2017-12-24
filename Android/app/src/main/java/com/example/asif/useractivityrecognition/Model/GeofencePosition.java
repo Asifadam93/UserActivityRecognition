@@ -46,4 +46,14 @@ public class GeofencePosition extends RealmObject {
     public void setRadius(int radius) {
         this.radius = radius;
     }
+
+    @Override
+    public String toString() {
+        return "GeofencePosition{" +
+                "geofenceId='" + geofenceId + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", radius=" + radius +
+                '}';
+    }
 }

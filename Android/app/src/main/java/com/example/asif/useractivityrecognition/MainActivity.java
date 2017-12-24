@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.asif.useractivityrecognition.Interface.GoogleClientListener;
+import com.example.asif.useractivityrecognition.Interface.LocationChangeListener;
+import com.example.asif.useractivityrecognition.Model.GeofencePosition;
 import com.example.asif.useractivityrecognition.Utils.GlobalFunctions;
 import com.example.asif.useractivityrecognition.Utils.GoogleClient;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -22,20 +24,15 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
-public class MainActivity extends AppCompatActivity implements OnRequestPermissionsResultCallback, GoogleClientListener {
+public class MainActivity extends AppCompatActivity implements OnRequestPermissionsResultCallback {
 
     private static final String TAG = "mMainActivity";
     private static final int AUTHORISATION_FILE_WRITE = 666;
-    private static final int AUTHORISATION_LOCATION = 999;
-    private View mLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // add google client callback to receive onConnected status
-        GoogleClient.getInstance(getApplicationContext()).mGoogleClientListener = this;
 
         findViewById(R.id.validateButtonView).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,49 +61,7 @@ public class MainActivity extends AppCompatActivity implements OnRequestPermissi
 
     }
 
-    private void startLocationMonitoring() {
 
-        Log.i(TAG, "startLocationMonitoring");
-
-        if (checkLocationPermission()) {
-
-            LocationRequest locationRequest = LocationRequest.create()
-                    .setInterval(10 * 1000)
-                    .setFastestInterval(5 * 1000)
-                    .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-
-            GoogleApiClient googleApiClient = GoogleClient.getInstance(this).getGoogleApiClient();
-
-            LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, new LocationListener() {
-                @Override
-                public void onLocationChanged(Location location) {
-
-                    String postionText = "Lat : " + location.getLatitude() + ", Long : " + location.getLongitude();
-                    Log.i(TAG, postionText);
-                }
-            });
-
-        } else {
-            askPermission();
-        }
-    }
-
-    private boolean checkLocationPermission() {
-
-        Log.i(TAG, "checkLocationPermission");
-
-        return (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED);
-    }
-
-    private void askPermission() {
-
-        Log.i(TAG, "askPermission");
-        ActivityCompat.requestPermissions(this,
-                new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                AUTHORISATION_LOCATION);
-
-    }
 
 
     @Override
@@ -131,26 +86,6 @@ public class MainActivity extends AppCompatActivity implements OnRequestPermissi
 
                 break;
 
-
-            case AUTHORISATION_LOCATION:
-
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                    Log.i(TAG, "permission granted");
-                    startLocationMonitoring();
-
-                } else {
-                    Log.i(TAG, "permission denied");
-                    GlobalFunctions.showSnackBar(this, "Permission location refusée");
-                }
-
-                break;
-
         }
-    }
-
-    @Override
-    public void onConnected() {
-        startLocationMonitoring();
     }
 }
