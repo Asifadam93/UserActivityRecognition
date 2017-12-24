@@ -141,9 +141,9 @@ public class GeofencingActivity extends AppCompatActivity {
         }
     }
 
-    private void startGeoFencing(GeofencePosition geofencePosition) {
+    private void startGeoFencing(final GeofencePosition geofencePosition) {
 
-        Log.i(TAG,geofencePosition.toString());
+        Log.i(TAG, geofencePosition.toString());
 
         if (mLocation == null) {
             GlobalFunctions.showSnackBar(activity, "Position not fixed yet");
@@ -179,6 +179,14 @@ public class GeofencingActivity extends AppCompatActivity {
 
                             if (status.isSuccess()) {
                                 GlobalFunctions.showSnackBar(activity, "Geofence added");
+
+                                // save geofence info to db
+                                realm.executeTransaction(new Realm.Transaction() {
+                                    @Override
+                                    public void execute(Realm realm) {
+                                        realm.copyToRealm(geofencePosition);
+                                    }
+                                });
 
                             } else {
                                 GlobalFunctions.showSnackBar(activity, "Error adding geofence");
