@@ -25,16 +25,22 @@
         <item>Maison</item>
         <item>Travail</item>
         <item>Ecole</item>
-        <item>Rue</item>
+        <item>Boutique</item>
     </string-array>
 
     <string-array name="reccord_label">
-        <item>Se lever</item>
-        <item>"S'assoir"</item>
-        <item>Ne rien faire</item>
+        <item>"S'assoir (chaise)"</item>
+        <item>Se lever (chaise)</item>
+        <item>"S'allonger (depuis position debout)"</item>
+        <item>"S'allonger (depuis position assise)"</item>
+        <item>"Se lever (depuis position allongée)"</item>
+        <item>"S'assoir (depuis position allongée)"</item>
+        <item>"Faire des pompes"</item>
         <item>Sauter</item>
         <item>Marcher</item>
         <item>Courrir</item>
+        <item>"Ne rien faire"</item>
+
     </string-array>
 
     <string name="title_activity_geo_fencing">GeoFencingActivity</string>

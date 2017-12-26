@@ -6,6 +6,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -25,7 +26,9 @@ public class RecordActivity extends AppCompatActivity  implements SensorEventLis
     @BindView(R.id.timerView) TextView timer;
     @BindView(R.id.buttonReccord) Button buttonReccord;
     @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.spinnerEtiqueete) Spinner etiquette;
+    @BindView(R.id.spinnerEtiquete) Spinner etiquette;
+    @BindView(R.id.localisation) TextView localisation;
+
 
     private static final String TAG = RecordActivity.class.getSimpleName();
     SensorManager sensorManager;
@@ -45,6 +48,7 @@ public class RecordActivity extends AppCompatActivity  implements SensorEventLis
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
+        localisation.setText(GeofenceService.localisation);
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -57,7 +61,7 @@ public class RecordActivity extends AppCompatActivity  implements SensorEventLis
         //désactivation du click (pour ne pas enregistrer plusieurs fois la même chose)
         buttonReccord.setClickable(false);
 
-        // Création d'un timer de 4s
+        // Création d'un timer de 2s
         new CountDownTimer(2100, 100) {
 
             DatasetLine ligne = new DatasetLine();
@@ -82,6 +86,7 @@ public class RecordActivity extends AppCompatActivity  implements SensorEventLis
             //réinitialisation du click sur le bouton d'enregistrement
             public void onFinish() {
                 ligne.etiquette = RecordActivity.this.etiquette.getSelectedItem().toString();
+                ligne.localisation = GeofenceService.localisation;
                 timer.setText("0.000");
                 progress.setProgress(0);
                 buttonReccord.setClickable(true);

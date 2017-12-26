@@ -14,7 +14,7 @@ public class DatasetLine
     private static final String TAG = RecordActivity.class.getSimpleName();
 
     public String  etiquette;
-    public int     localisation;
+    public String  localisation;
 
     public List<Float> x_acc = new ArrayList<Float>();
     public List<Float> y_acc = new ArrayList<Float>();
@@ -25,13 +25,14 @@ public class DatasetLine
 
     public String toString() {
         Log.d(TAG, this.etiquette +
-                "\n\tlocalisation : " + String.valueOf(localisation) +
-                "\n\tx : " + x_acc.toString() +
-                "\n\ty : " + y_acc.toString() +
-                "\n\tz : " + z_acc.toString() +
-                "\n\tt : " + t_acc.toString());
+            "\n\tlocalisation : " + this.localisation +
+            "\n\tx : " + x_acc.toString() +
+            "\n\ty : " + y_acc.toString() +
+            "\n\tz : " + z_acc.toString() +
+            "\n\tt : " + t_acc.toString());
 
-        String retour = this.etiquette+";";
+        String retour = this.etiquette+";"+
+                this.localisation+";";
 
         //création d'une liste qui concatète les données de l'accéléromètre
         List<Float> tempo = new ArrayList<Float>();

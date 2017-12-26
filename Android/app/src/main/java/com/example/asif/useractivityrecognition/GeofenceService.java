@@ -24,7 +24,9 @@ import java.util.List;
 public class GeofenceService extends IntentService {
 
     private final static String TAG = "mGeofenceService";
+    public final static String DEFAULT_LOCALISATION = "Exterieur";
     public static final int GEOFENCE_NOTIFICATION_ID = 0;
+    public static String localisation = DEFAULT_LOCALISATION;
 
     public GeofenceService() {
         super(TAG);
@@ -47,11 +49,13 @@ public class GeofenceService extends IntentService {
             if (transition == Geofence.GEOFENCE_TRANSITION_ENTER) {
 
                 Log.i(TAG, "Enter transition : " + requestId);
+                GeofenceService.localisation = requestId;
                 sendNotification(requestId + " enter");
 
             } else if (transition == Geofence.GEOFENCE_TRANSITION_EXIT) {
 
                 Log.i(TAG, "Exit transition : " + requestId);
+                GeofenceService.localisation = DEFAULT_LOCALISATION;
                 sendNotification(requestId + " exit");
 
             }

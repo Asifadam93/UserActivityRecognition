@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.asif.useractivityrecognition.Adapter.GeofencePositionAdapter;
@@ -270,23 +271,23 @@ public class GeofencingActivity extends AppCompatActivity {
 
     private void showAddDialog() {
 
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this, AlertDialog.THEME_DEVICE_DEFAULT_DARK);
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Alert);
         LayoutInflater inflater = this.getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.custom_dialog, null);
         dialogBuilder.setView(dialogView);
 
-        final EditText edt = dialogView.findViewById(R.id.editTextId);
+        final Spinner spinner = (Spinner) dialogView.findViewById(R.id.localisationSpinner);
 
-        dialogBuilder.setTitle("Ajouter geofence");
-        dialogBuilder.setMessage("Donner un nom : ");
+        dialogBuilder.setTitle("Ajouter une localisation");
+        dialogBuilder.setMessage("Sélectionner un nom : ");
         dialogBuilder.setCancelable(true);
         dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
 
-                final String geoId = edt.getText().toString();
+                final String geoId = spinner.getSelectedItem().toString();
 
                 if (geoId.isEmpty()) {
-                    edt.setError("Insert a name");
+                    GlobalFunctions.showSnackBar(GeofencingActivity.this, "Veuillez sélectionner une localisation");
                     return;
                 }
 
@@ -316,37 +317,3 @@ public class GeofencingActivity extends AppCompatActivity {
     }
 
 }
-
-/*realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                GeofencePosition geofencePosition = realm.createObject(GeofencePosition.class);
-                geofencePosition.setGeofenceId("Home");
-                geofencePosition.setLatitude(48.9679385);
-                geofencePosition.setLongitude(2.2800401);
-                geofencePosition.setRadius(100);
-            }
-        });
-
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                GeofencePosition geofencePosition = realm.createObject(GeofencePosition.class);
-                geofencePosition.setGeofenceId("Office");
-                geofencePosition.setLatitude(48.8968845);
-                geofencePosition.setLongitude(2.3663293);
-                geofencePosition.setRadius(100);
-            }
-        });*/
-
-/*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
