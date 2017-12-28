@@ -315,5 +315,4 @@ public class GeofencingActivity extends AppCompatActivity {
         intent.putExtra(NOTIFICATION_MSG, msg);
         return intent;
     }
-
 }
