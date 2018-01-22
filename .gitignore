@@ -56,10 +56,6 @@ freeline_project_description.json
 
 Android/\.idea/
 
-Notebook_python/tree.dot
-
-Notebook_python/tree.png
-
 Android/.idea/misc.xml
 
 Notebook_python/.ipynb_checkpoints/Analyse Dataset-checkpoint.ipynb
