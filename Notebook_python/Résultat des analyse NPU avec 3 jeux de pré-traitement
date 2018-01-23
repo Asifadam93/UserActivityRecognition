@@ -1,0 +1,190 @@
+AVEC T : 
+
+ANALYSE AVEC LE JEU DE DDONNEES BRUTES : 
+Detailed classification report:
+
+                                     precision    recall  f1-score   support
+
+                            Courrir       0.94      0.40      0.57        42
+                            Marcher       0.76      0.67      0.71        42
+                      Ne rien faire       0.67      0.88      0.76        40
+S'allonger (depuis position assise)       0.90      0.90      0.90        42
+S'allonger (depuis position debout)       0.65      0.89      0.75        35
+                  S'assoir (chaise)       0.77      0.75      0.76        40
+S'assoir (depuis position allongée)       0.68      0.87      0.77        47
+                             Sauter       0.62      0.74      0.68        35
+                  Se lever (chaise)       0.78      0.76      0.77        33
+Se lever (depuis position allongée)       0.73      0.47      0.58        40
+
+                        avg / total       0.75      0.73      0.72       396
+                        
+                        
+
+ANALYSE AVEC LE JEU DE DONNEES ANALYSE : 
+Detailed classification report:
+
+                                     precision    recall  f1-score   support
+
+                            Courrir       0.84      0.55      0.67        38
+                            Marcher       0.82      0.86      0.84        36
+                      Ne rien faire       0.82      0.94      0.88        34
+S'allonger (depuis position assise)       0.91      0.95      0.93        44
+S'allonger (depuis position debout)       0.89      0.86      0.87        36
+                  S'assoir (chaise)       0.73      0.78      0.75        41
+S'assoir (depuis position allongée)       0.85      0.80      0.83        51
+                             Sauter       0.63      0.85      0.73        39
+                  Se lever (chaise)       0.91      0.80      0.85        40
+Se lever (depuis position allongée)       0.76      0.70      0.73        37
+
+                        avg / total       0.82      0.81      0.81       396
+                        
+ANALYSE AVEC LE JEU DE DDONNEES ANALYSE 2 (Sans X, Y, Z et T):
+Detailed classification report:
+
+                                     precision    recall  f1-score   support
+
+                            Courrir       0.88      0.84      0.86        44
+                            Marcher       0.88      0.86      0.87        42
+                      Ne rien faire       0.97      0.95      0.96        39
+S'allonger (depuis position assise)       0.63      0.76      0.69        41
+S'allonger (depuis position debout)       0.45      0.39      0.41        44
+                  S'assoir (chaise)       0.58      0.54      0.56        35
+S'assoir (depuis position allongée)       0.73      0.78      0.76        46
+                             Sauter       0.82      0.95      0.88        38
+                  Se lever (chaise)       0.57      0.71      0.63        35
+Se lever (depuis position allongée)       0.50      0.28      0.36        32
+
+                        avg / total       0.71      0.71      0.71       396 
+
+
+
+
+
+
+
+
+
+SANS T :
+
+ANALYSE AVEC LE JEU DE DDONNEES BRUTES : 
+Detailed classification report:
+
+                                     precision    recall  f1-score   support
+
+                            Courrir       0.83      0.47      0.60        40
+                            Marcher       0.82      0.72      0.77        43
+                      Ne rien faire       0.54      0.90      0.68        41
+S'allonger (depuis position assise)       0.92      0.79      0.85        43
+S'allonger (depuis position debout)       0.75      0.92      0.83        39
+                  S'assoir (chaise)       0.69      0.82      0.75        33
+S'assoir (depuis position allongée)       0.86      0.86      0.86        49
+                             Sauter       0.66      0.55      0.60        38
+                  Se lever (chaise)       0.80      0.63      0.71        38
+Se lever (depuis position allongée)       0.66      0.66      0.66        32
+
+                        avg / total       0.76      0.74      0.74       396
+                        
+                        
+ANALYSE AVEC LE JEU DE DONNEES ANALYSE : 
+Detailed classification report:
+
+                                     precision    recall  f1-score   support
+
+                            Courrir       0.78      0.40      0.53        45
+                            Marcher       0.80      0.97      0.88        38
+                      Ne rien faire       0.97      1.00      0.99        39
+S'allonger (depuis position assise)       0.91      0.93      0.92        42
+S'allonger (depuis position debout)       0.77      0.88      0.82        34
+                  S'assoir (chaise)       0.76      0.89      0.82        38
+S'assoir (depuis position allongée)       0.89      0.93      0.91        44
+                             Sauter       0.59      0.57      0.58        42
+                  Se lever (chaise)       0.81      0.79      0.80        38
+Se lever (depuis position allongée)       0.83      0.83      0.83        36
+
+                        avg / total       0.81      0.81      0.80       396
+
+ANALYSE AVEC LE JEU DE DDONNEES ANALYSE 2 (Sans X, Y et Z):
+Detailed classification report:
+
+                                     precision    recall  f1-score   support
+
+                            Courrir       0.83      0.83      0.83        42
+                            Marcher       0.82      0.93      0.87        40
+                      Ne rien faire       0.97      1.00      0.99        35
+S'allonger (depuis position assise)       0.64      0.86      0.73        35
+S'allonger (depuis position debout)       0.71      0.65      0.68        37
+                  S'assoir (chaise)       0.64      0.72      0.68        40
+S'assoir (depuis position allongée)       0.77      0.68      0.72        50
+                             Sauter       0.78      0.84      0.81        38
+                  Se lever (chaise)       0.62      0.55      0.58        38
+Se lever (depuis position allongée)       0.64      0.44      0.52        41
+
+                        avg / total       0.74      0.74      0.74       396
+
+
+
+
+
+
+
+
+
+
+
+UNIQUEMENT AVEC T :
+
+ANALYSE AVEC LE JEU DE DDONNEES BRUTES : 
+Detailed classification report:
+
+                                     precision    recall  f1-score   support
+
+                            Courrir       0.59      0.23      0.33        43
+                            Marcher       0.57      0.77      0.65        39
+                      Ne rien faire       0.67      1.00      0.80        43
+S'allonger (depuis position assise)       0.90      0.68      0.78        41
+S'allonger (depuis position debout)       0.70      0.70      0.70        37
+                  S'assoir (chaise)       0.57      0.61      0.59        33
+S'assoir (depuis position allongée)       0.54      0.69      0.61        45
+                             Sauter       0.65      0.67      0.66        36
+                  Se lever (chaise)       0.68      0.68      0.68        38
+Se lever (depuis position allongée)       0.63      0.41      0.50        41
+
+                        avg / total       0.65      0.64      0.63       396
+
+
+ANALYSE AVEC LE JEU DE DONNEES ANALYSE : 
+Detailed classification report:
+
+                                     precision    recall  f1-score   support
+
+                            Courrir       0.83      0.21      0.33        48
+                            Marcher       0.43      0.71      0.53        41
+                      Ne rien faire       0.89      1.00      0.94        34
+S'allonger (depuis position assise)       0.67      0.74      0.71        39
+S'allonger (depuis position debout)       0.62      0.67      0.64        42
+                  S'assoir (chaise)       0.63      0.85      0.72        34
+S'assoir (depuis position allongée)       0.65      0.73      0.69        41
+                             Sauter       0.62      0.36      0.45        42
+                  Se lever (chaise)       0.71      0.80      0.75        40
+Se lever (depuis position allongée)       0.48      0.40      0.44        35
+
+                        avg / total       0.66      0.63      0.61       396
+
+
+ANALYSE AVEC LE JEU DE DDONNEES ANALYSE 2 (Sans T):
+Detailed classification report:
+
+                                     precision    recall  f1-score   support
+
+                            Courrir       0.76      0.67      0.71        39
+                            Marcher       0.76      0.62      0.68        40
+                      Ne rien faire       0.95      0.95      0.95        38
+S'allonger (depuis position assise)       0.46      0.41      0.43        44
+S'allonger (depuis position debout)       0.73      0.42      0.54        45
+                  S'assoir (chaise)       0.33      0.40      0.36        35
+S'assoir (depuis position allongée)       0.52      0.53      0.53        45
+                             Sauter       0.61      0.94      0.74        35
+                  Se lever (chaise)       0.37      0.41      0.38        37
+Se lever (depuis position allongée)       0.40      0.45      0.42        38
+
+                        avg / total       0.59      0.57      0.57       396
